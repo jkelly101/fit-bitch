@@ -8,7 +8,7 @@ function Nav() {
   const [loginExpanded, setLoginExpanded] = useState(false);
   const {email, loggedIn} = useContext(UserContext);
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg">
       <a className="navbar-brand" href="/">
         React Reading List
       </a>
