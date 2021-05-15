@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 
 const mongoose = require("mongoose");
@@ -15,7 +16,11 @@ app.use(express.json());
 
 // We need to use sessions to keep track of our user's login status
 app.use(
-  session({ secret: "the secret that always changes", resave: true, saveUninitialized: true })
+  session({
+    secret: "the secret that always changes",
+    resave: true,
+    saveUninitialized: true,
+  })
 );
 app.use(passport.initialize());
 app.use(passport.session());
@@ -26,11 +31,11 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
-
+console.log(process.env.MONGODB_URL);
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/proj3");
+mongoose.connect(process.env.MONGODB_URL);
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
