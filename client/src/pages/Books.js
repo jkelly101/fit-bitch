@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Select from 'react-select'
 
 function Books() {
   // Setting our component's initial state
@@ -38,6 +39,11 @@ function Books() {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value})
   };
+  
+  function handleSelectChange(value, action) {
+    setFormObject({...formObject, [action.name] : value.value})
+  };
+
 
   // When the form is submitted, use the API.saveBook method to save the book data
   // Then reload books from the database
@@ -46,48 +52,83 @@ function Books() {
     if (formObject.title && formObject.author) {
       API.saveBook({
         title: formObject.title,
-        author: formObject.author,
-        synopsis: formObject.synopsis
+        type: formObject.type,
+        WorkoutNotes: formObject.WorkoutNotes
       })
         .then(res => loadBooks())
         .catch(err => console.log(err));
     }
   };
+  
+   const options = [
+    { value: 'cardio', label: 'Cardio' },
+    { value: 'strength', label: 'Strength' },
+    { value: 'hybrid', label: 'Hybrid' }
+  ]
 
     return (
       <Container fluid>
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h1>Log a Workout</h1>
             </Jumbotron>
             <form>
-              <Input
-                onChange={handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                onChange={handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <TextArea
-                onChange={handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              />
-              <FormBtn
-                disabled={!(formObject.author && formObject.title)}
-                onClick={handleFormSubmit}
-              >
-                Submit Book
-              </FormBtn>
+              <Row>
+                <Col size="md-6">                             
+                  <Input
+                    onChange={handleInputChange}
+                    name="title"
+                    placeholder="Title (required)"
+                  />
+                  <Select
+                    onChange={handleSelectChange}
+                    name="type"
+                    className="form-select mb-3"
+                    placeholder="Workout Type (required)"
+                    options={options}
+                  />
+                  <TextArea
+                    onChange={handleInputChange}
+                    name="WorkoutNotes"
+                    placeholder="Workout Notes (Optional)"
+                  />
+                  <FormBtn
+                    disabled={!(formObject.title)}
+                    onClick={handleFormSubmit}
+                  >
+                    Submit Workout
+                  </FormBtn>                
+                </Col>
+                <Col size="md-6">
+                <Input
+                    onChange={handleInputChange}
+                    name="Sets"
+                    placeholder="Number of Sets"
+                  />
+                  <Input
+                    onChange={handleInputChange}
+                    name="Period"
+                    placeholder="Workout Length"
+                  />
+                  <Input
+                    onChange={handleInputChange}
+                    name="Intensity"
+                    placeholder="Intensisty of Workout"
+                  />
+                   <Input
+                    onChange={handleInputChange}
+                    name="kCal"
+                    placeholder="Calories Burned"
+                  />
+
+                </Col>
+              </Row>
             </form>
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Books On My List</h1>
+              <h1>Previous Workouts</h1>
             </Jumbotron>
             {books.length ? (
               <List>
@@ -95,7 +136,7 @@ function Books() {
                   <ListItem key={book._id}>
                     <Link to={"/books/" + book._id}>
                       <strong>
-                        {book.title} by {book.author}
+                        {book.title} [{book.type}]
                       </strong>
                     </Link>
                     <DeleteBtn onClick={() => deleteBook(book._id)} />
