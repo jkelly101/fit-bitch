@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import UserContext from "./utils/UserContext";
 import SignUp from "./pages/SignUp";
 import Logout from "./pages/Logout";
+import "./app.css";
 
 function App() {
   const [email, setEmail] = useState("");
