@@ -4,6 +4,7 @@ import Books from "./pages/Books";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Stats from "./components/Stats";
 import Login from "./pages/Login";
 import UserContext from "./utils/UserContext";
 import SignUp from "./pages/SignUp";
@@ -17,6 +18,7 @@ function App() {
       <UserContext.Provider value={{email, setEmail, loggedIn, setLoggedIn}}>
         <div>
           <Nav />
+          <Stats />
           <Switch>
             <Route exact path={["/", "/books"]}>
               <Books />
