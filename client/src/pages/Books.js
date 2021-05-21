@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
+import Stats from "../components/Stats";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Select from 'react-select'
 
@@ -71,6 +72,7 @@ function Books() {
 
     return (
       <Container fluid>
+        <Stats />
         <Row>
           <Col size="md-6">
               <h1 className="mb-3 mt-3">Log a Workout</h1>
