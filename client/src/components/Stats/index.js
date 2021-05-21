@@ -1,17 +1,31 @@
-import React, { useState, Fragment, useContext } from "react";
-import UserContext from "../../utils/UserContext";
+import React, { useState, useEffect} from "react";
+import API from "../../utils/API";
 import "./styles.css";
 
 function Stats() {
 
-    const { email, loggedIn } = useContext(UserContext);
+    const [stats, setStats] = useState([])
+    let totals = [];
 
-  return (
-    <div className="card stat-card">
+    useEffect(() => {
+        loadStats()
+    }, [])
+    
+    function loadStats() {
+        API.getBooks()
+          .then(res => 
+            setStats(res.data)       
+          )
+          .catch(err => console.log(err));
+    };
 
-
-    </div>
-  );
+    return (
+        <div className="card stat-card">           
+            <div>
+                
+            </div>
+        </div>
+    );
 }
 
 export default Stats;

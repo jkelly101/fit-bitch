@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 function Nav() {
+
   const [loginExpanded, setLoginExpanded] = useState(false);
   const { email, loggedIn } = useContext(UserContext);
   
@@ -15,7 +16,7 @@ function Nav() {
   const handleShow = () => setShow(true);
   
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary">
       <a className="navbar-brand" href="/">
           Fit-Bitch
       </a>
@@ -44,19 +45,11 @@ function Nav() {
       })()}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>User Login</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <LoginForm className="top-menu-login"/>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
     </nav>
   );

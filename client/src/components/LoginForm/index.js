@@ -77,7 +77,7 @@ function LoginForm(props) {
             </form>
           );
         } else {
-          return <h3>{email}</h3>;
+          return <h3>Welcome Back, {email}</h3>;
         }
       })()}
     </Fragment>
