@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -49,11 +48,15 @@ function Books() {
   // Then reload books from the database
   function handleFormSubmit(event) {
     event.preventDefault();
-    if (formObject.title && formObject.author) {
+    if (formObject.title && formObject.type) {
       API.saveBook({
         title: formObject.title,
         type: formObject.type,
-        WorkoutNotes: formObject.WorkoutNotes
+        WorkoutNotes: formObject.WorkoutNotes,
+        Sets: formObject.Sets,
+        Period: formObject.Period,
+        Intensity: formObject.Intensity,
+        kCal: formObject.kCal
       })
         .then(res => loadBooks())
         .catch(err => console.log(err));
@@ -70,9 +73,7 @@ function Books() {
       <Container fluid>
         <Row>
           <Col size="md-6">
-            <Jumbotron>
-              <h1>Log a Workout</h1>
-            </Jumbotron>
+              <h1 className="mb-3 mt-3">Log a Workout</h1>
             <form>
               <Row>
                 <Col size="md-6">                             
@@ -104,6 +105,7 @@ function Books() {
                 <Input
                     onChange={handleInputChange}
                     name="Sets"
+                    type="number"
                     placeholder="Number of Sets"
                   />
                   <Input
@@ -119,6 +121,7 @@ function Books() {
                    <Input
                     onChange={handleInputChange}
                     name="kCal"
+                    type="number"
                     placeholder="Calories Burned"
                   />
 
@@ -127,17 +130,25 @@ function Books() {
             </form>
           </Col>
           <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Previous Workouts</h1>
-            </Jumbotron>
+            
+            <h1 className="mb-3 mt-3">Previous Workouts</h1>
+
             {books.length ? (
               <List>
                 {books.map(book => (
                   <ListItem key={book._id}>
                     <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} [{book.type}]
-                      </strong>
+                      <div className="d-flex w-100 justify-content-between">
+                          <h5 className="mb-1"> {book.title} <span className="text-muted">{book.type}</span></h5>
+                          <small>
+                            { (new Date(book.date)).toLocaleDateString() }                                                    
+                          </small>
+                      </div>
+                      <p className="mb-1">{book.WorkoutNotes}</p>
+                      <span className="p-2 mr-2 badge bg-light rounded-pill">Sets: {book.Sets}</span>
+                      <span className="p-2 mr-2 badge bg-light rounded-pill">Period: {book.Period}</span>
+                      <span className="p-2 mr-2 badge bg-light rounded-pill">Intensity: {book.Intensity}</span>
+                      <span className="p-2 mr-2 badge bg-light rounded-pill">KCalories: {book.kCal}</span>
                     </Link>
                     <DeleteBtn onClick={() => deleteBook(book._id)} />
                   </ListItem>
