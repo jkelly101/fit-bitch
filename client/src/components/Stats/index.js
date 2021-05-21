@@ -20,7 +20,7 @@ function Stats() {
     };
 
     return (
-        <div className="card stat-card">           
+        <div className="card stat-card pt-3">           
             <div>
                 
             </div>

@@ -34,7 +34,7 @@ function LoginForm(props) {
         // console.log(data);
         setEmail(data.data.email);
         setLoggedIn(true);
-        history.push("/");
+        history.push("/books");
       })
       .catch((err) => {
         console.log(err);

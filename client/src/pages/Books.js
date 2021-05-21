@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -7,11 +7,13 @@ import { List, ListItem } from "../components/List";
 import Stats from "../components/Stats";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Select from 'react-select'
+import UserContext from "../utils/UserContext";
 
 function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState({})
+  const { email } = useContext(UserContext);
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -57,7 +59,9 @@ function Books() {
         Sets: formObject.Sets,
         Period: formObject.Period,
         Intensity: formObject.Intensity,
-        kCal: formObject.kCal
+        kCal: formObject.kCal,
+        userEmail: email
+
       })
         .then(res => loadBooks())
         .catch(err => console.log(err));

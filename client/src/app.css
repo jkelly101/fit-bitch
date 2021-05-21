@@ -1,6 +1,8 @@
 .submit-btn{
     background-color: #48cae4;
 }
-.row {
+.container, .container-fluid {
     background-color: #caf0f8;
+    height:100vh;
+    padding-top:16px;
 }

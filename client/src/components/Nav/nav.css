@@ -7,3 +7,24 @@ a {
 .btn-success:disabled {
     background-color: #48cae4;
 }
+.logged-in-text
+{
+    margin-bottom:0px;
+    color:#fff;
+    margin-right:50px;
+    display:inline-block;
+    font-size:1.4rem;
+    margin-top:4px;
+    margin-left:20px;
+}
+
+
+.logout-text
+{
+    float:right;
+}
+
+.navbar-div
+{
+    width:100%;
+}
