@@ -2,6 +2,7 @@ import React, { useState, Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
 import LoginForm from "../LoginForm";
+import "./nav.css";
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
