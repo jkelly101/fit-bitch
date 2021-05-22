@@ -60,7 +60,10 @@ router.get("/data", (req, res) => {
         // Sending back a password, even a hashed password, isn't a good idea
         res.json({
             email: req.user.email,
-            _id: req.user._id
+            _id: req.user._id,
+            weight: req.user.weight,
+            height: req.user.height,
+            bodyFat: req.user.bodyFat
         });
     }
 });

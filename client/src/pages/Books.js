@@ -13,12 +13,17 @@ function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState({})
-  const { email } = useContext(UserContext);
+  const { email, loggedIn } = useContext(UserContext);
+
 
   // Load all books and store them with setBooks
   useEffect(() => {
     loadBooks()
   }, [])
+
+  // if(loggedIn) {
+  //   Stats.forceUpdate()
+  // }
 
   // Loads all books and sets them to books
   function loadBooks() {
@@ -75,7 +80,8 @@ function Books() {
   ]
 
     return (
-      <Container fluid>
+
+     <Container fluid>
         <Stats />
         <Row>
           <Col size="md-6">

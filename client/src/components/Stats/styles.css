@@ -2,3 +2,25 @@
 {
     height:200px;
 }
+
+.stat-card .row, .stat-card .row div
+{
+    height:100%;
+}
+
+.display-card
+{
+    text-align:center;
+}
+
+.card-title
+{
+    margin-top:6px;
+    margin-bottom:0px;
+}
+
+.card-content
+{
+    font-size:3rem;
+    color:#009B1B;
+}
