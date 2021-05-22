@@ -10,9 +10,9 @@ export default {
     return axios.get("/api/books/" + id);
   },
 
-  getWorkouts: function(userEmail) {
-    return axios.get("/api/books/" + userEmail);
-  },
+  // getWorkouts: function(userEmail) {
+  //   return axios.get("/api/books/" + userEmail);
+  // },
 
   // Deletes the book with the given id
   deleteBook: function(id) {

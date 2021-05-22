@@ -2,11 +2,13 @@ import React, { Fragment, useContext, useRef } from 'react';
 // import "./style.scss";
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
+import { Link, useHistory } from "react-router-dom";
 
 function SignUpForm(props) {
     const { email, setEmail, loggedIn, setLoggedIn } = useContext(UserContext);
     const emailInput = useRef();
     const passwordInput = useRef();
+    const history = useHistory();
 
     const weightInput = useRef();
     const heightInput = useRef();
@@ -47,6 +49,7 @@ function SignUpForm(props) {
                 // console.log(data);
                 setEmail(data.data.email);
                 setLoggedIn(true);
+                history.push("/books");
             })
             .catch(err => {
                 console.log(err);
@@ -83,7 +86,14 @@ function SignUpForm(props) {
                     );
                 }
                 else {
-                    return <h3>{email}</h3>;
+                    return (  
+                        <Fragment>
+                            <h3>{email}</h3>
+                            <Link className="btn btn-info logout-btn" to="/books">
+                                Go to Your Workouts
+                            </Link>
+                        </Fragment>
+                    );
                 }
             })()
             }

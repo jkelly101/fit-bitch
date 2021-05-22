@@ -36,6 +36,7 @@ router.post("/signup", (req, res) => {
     })
     .then(data => {
         res.json({email: data.email});
+        res.redirect('/books');
     })
     .catch(err => {
         console.log(err);
