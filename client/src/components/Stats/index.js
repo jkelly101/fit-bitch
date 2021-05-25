@@ -22,20 +22,20 @@ function Stats() {
 
     return (
         
-        <div className="card stat-card p-3">           
+            
             <Row>
                 <Col size="md-3">   
                     <div className="card display-card">           
                         <h3 className = "card-title">My Height</h3>
                         <p className="card-content mb-0">{stats.height}</p>
-                        <small>{ stats.height / 12 } Feet</small>
+                        <p>{ stats.height / 12 } Feet</p>
                     </div>
                 </Col>
                 <Col size="md-3">   
                     <div className="card display-card">           
                         <h3 className = "card-title">My Weight</h3>
                         <p className="card-content mb-0">{stats.weight}</p>
-                        <small>{ stats.weight * 0.453592 } Kilograms</small>
+                        <p>{ (stats.weight * 0.453592).toFixed(2) } Kilograms</p>
                     </div>
                 </Col>
                 <Col size="md-3">
@@ -51,7 +51,7 @@ function Stats() {
                     </div>                  
                 </Col>
             </Row>
-        </div>
+    
     );
 }
 
