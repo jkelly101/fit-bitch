@@ -29,10 +29,14 @@ router.post("/signup", (req, res) => {
     console.log(req.body);
     db.User.create({
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        weight: req.body.weight,
+        height: req.body.height,
+        bodyFat: req.body.bodyFat
     })
     .then(data => {
         res.json({email: data.email});
+        res.redirect('/books');
     })
     .catch(err => {
         console.log(err);
@@ -56,7 +60,10 @@ router.get("/data", (req, res) => {
         // Sending back a password, even a hashed password, isn't a good idea
         res.json({
             email: req.user.email,
-            _id: req.user._id
+            _id: req.user._id,
+            weight: req.user.weight,
+            height: req.user.height,
+            bodyFat: req.user.bodyFat
         });
     }
 });

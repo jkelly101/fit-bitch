@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import Stats from "../components/Stats";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Select from 'react-select'
+import UserContext from "../utils/UserContext";
 import Select from 'react-select';
 import ResultList from "../components/ResultList";
 
@@ -20,6 +22,10 @@ function Books() {
     loadBooks();
     getGiphy();
   }, [])
+
+  // if(loggedIn) {
+  //   Stats.forceUpdate()
+  // }
 
   // Loads all books and sets them to books
   function loadBooks() {
@@ -68,7 +74,9 @@ function Books() {
         Sets: formObject.Sets,
         Period: formObject.Period,
         Intensity: formObject.Intensity,
-        kCal: formObject.kCal
+        kCal: formObject.kCal,
+        userEmail: email
+
       })
         .then(res => loadBooks())
         .catch(err => console.log(err));
@@ -82,7 +90,8 @@ function Books() {
   ]
 
     return (
-      <Container fluid>
+
+     <Container fluid>
         <Stats />
         <Row>
           <Col size="md-6">
