@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
 import LoginForm from "../LoginForm";
 import "./nav.css";
-
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 function Nav() {
@@ -24,12 +22,16 @@ function Nav() {
       {(() => {
         if (loggedIn) {
           return (
-            <p className="logged-in-text">
-              Logged in as {email}{" "}
-              <Link to="/logout" onClick={() => setLoginExpanded(false)}>
-                Logout
-              </Link>{" "}
-            </p>
+            <div className="navbar-div">
+              <p className="logged-in-text ">
+                Logged in as {email}{" "}
+              </p>
+              <p className="logged-in-text logout-text">
+                <Link className="btn btn-warning logout-btn" to="/logout" onClick={() => setLoginExpanded(false)}>
+                  Logout
+                </Link>{" "}
+              </p>
+            </div>
           );
         } else {
           if (!loginExpanded) {

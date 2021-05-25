@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const workoutSchema = new Schema({
   title: { type: String, required: true },
   type: { type: String, required: true },
+  userEmail: { type: String, required: true },
   WorkoutNotes: String,
   Sets: { type: Number},
   Period: { type: String},
