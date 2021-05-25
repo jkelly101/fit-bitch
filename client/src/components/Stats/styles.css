@@ -1,4 +1,9 @@
 .stat-card
 {
     height:200px;
+    
+    
+}
+div.card.stat-card {
+    background-color: #0096c7
 }
