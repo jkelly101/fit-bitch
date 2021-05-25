@@ -19,8 +19,8 @@ function App() {
         <div>
           <Nav />
           <Switch>
-            <Route exact path={["/", "/books"]}>
-              <Books />
+            <Route exact path={["/", "/signup"]}>
+              <SignUp />            
             </Route>
             <Route exact path="/books/:bookid">
               <Detail />
@@ -28,8 +28,8 @@ function App() {
             <Route exact path="/login">
               <Login />
             </Route>
-            <Route exact path="/signup">
-              <SignUp />
+            <Route exact path="/books">
+            <Books />
             </Route>
             <Route exact path="/logout">
               <Logout />

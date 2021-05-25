@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -6,13 +6,15 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import Stats from "../components/Stats";
 import { Input, TextArea, FormBtn } from "../components/Form";
-import Select from 'react-select';
+import Select from 'react-select'
+import UserContext from "../utils/UserContext";
 import ResultList from "../components/ResultList";
 
 function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState({})
+  const { email, loggedIn } = useContext(UserContext);
   const [giphy,  setGiphy] = useState([])
 
   // Load all books and store them with setBooks
@@ -20,6 +22,10 @@ function Books() {
     loadBooks();
     getGiphy();
   }, [])
+
+  // if(loggedIn) {
+  //   Stats.forceUpdate()
+  // }
 
   // Loads all books and sets them to books
   function loadBooks() {
@@ -68,7 +74,9 @@ function Books() {
         Sets: formObject.Sets,
         Period: formObject.Period,
         Intensity: formObject.Intensity,
-        kCal: formObject.kCal
+        kCal: formObject.kCal,
+        userEmail: email
+
       })
         .then(res => loadBooks())
         .catch(err => console.log(err));
@@ -82,12 +90,15 @@ function Books() {
   ]
 
     return (
-      <Container fluid>
+
+     <Container fluid>
         <Stats />
         <Row>
           <Col size="md-6">
               <h1 className="mb-3 mt-3">Log a Workout</h1>
             <form>
+              <div className="card">
+              <div className="card-body">    
               <Row>
                 <Col size="md-6">                             
                   <Input
@@ -140,6 +151,8 @@ function Books() {
 
                 </Col>
               </Row>
+              </div>
+              </div>
             </form>
           </Col>
           <Col size="md-6 sm-12">

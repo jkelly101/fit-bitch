@@ -1,6 +1,35 @@
-button.btn.submit-btn{
-    background-color: #0096c7 !important;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+*
+{
+    font-family: 'Roboto', sans-serif!important;
 }
-.row {
-    background-color: #caf0f8;
+
+button.btn.submit-btn{
+    background-color: #472BAE !important;
+    box-shadow:0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    color:#fff;
+}
+
+.container, .container-fluid {
+    background-color: #00b4d8;
+    height:100vh;
+    padding-top:16px;
+}
+
+body
+{
+    background-color: #00b4d8!important;
+}
+
+input
+{
+    background-color: #FBFEFF!important;
+}
+
+.card
+{
+
+    box-shadow:0 8px 17px rgba(0, 0, 0, 0.2);
 }
