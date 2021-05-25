@@ -1,5 +1,5 @@
-.submit-btn{
-    background-color: #48cae4;
+button.btn.submit-btn{
+    background-color: #0096c7 !important;
 }
 .container, .container-fluid {
     background-color: #caf0f8;

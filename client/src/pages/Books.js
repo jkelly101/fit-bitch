@@ -8,17 +8,19 @@ import Stats from "../components/Stats";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Select from 'react-select'
 import UserContext from "../utils/UserContext";
+import Select from 'react-select';
+import ResultList from "../components/ResultList";
 
 function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState({})
-  const { email, loggedIn } = useContext(UserContext);
-
+  const [giphy,  setGiphy] = useState([])
 
   // Load all books and store them with setBooks
   useEffect(() => {
-    loadBooks()
+    loadBooks();
+    getGiphy();
   }, [])
 
   // if(loggedIn) {
@@ -34,6 +36,14 @@ function Books() {
       .catch(err => console.log(err));
   };
 
+  function getGiphy() {
+    API.getWorkoutGiphy()
+      .then(res => {
+        setGiphy(res.data.data)
+        console.log(res.data.data)
+      })
+      .catch(err => console.log(err));
+  };
   // Deletes a book from the database with a given id, then reloads books from the db
   function deleteBook(id) {
     API.deleteBook(id)
@@ -169,6 +179,7 @@ function Books() {
             ) : (
               <h3>No Results to Display</h3>
             )}
+            <ResultList results={giphy}/>
           </Col>
         </Row>
       </Container>
