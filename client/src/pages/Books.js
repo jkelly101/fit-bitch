@@ -8,13 +8,13 @@ import Stats from "../components/Stats";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import Select from 'react-select'
 import UserContext from "../utils/UserContext";
-import Select from 'react-select';
 import ResultList from "../components/ResultList";
 
 function Books() {
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState({})
+  const { email, loggedIn } = useContext(UserContext);
   const [giphy,  setGiphy] = useState([])
 
   // Load all books and store them with setBooks
@@ -97,6 +97,8 @@ function Books() {
           <Col size="md-6">
               <h1 className="mb-3 mt-3">Log a Workout</h1>
             <form>
+              <div className="card">
+              <div className="card-body">    
               <Row>
                 <Col size="md-6">                             
                   <Input
@@ -149,6 +151,8 @@ function Books() {
 
                 </Col>
               </Row>
+              </div>
+              </div>
             </form>
           </Col>
           <Col size="md-6 sm-12">

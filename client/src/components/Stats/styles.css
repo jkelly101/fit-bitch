@@ -1,9 +1,26 @@
-.stat-card
+
+
+.display-card
 {
-    height:200px;
+    text-align:center;
+    box-shadow:0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    height:180px;
+}
+
+.card-title
+{
+    margin-top:12px;
+    margin-bottom:0px;
+}
+
+.card-content
+{
+    font-size:3rem;
+    font-weight:700;
+    color:#009B1B;
+}
     
     
-}
-div.card.stat-card {
-    background-color: #0096c7
-}
+/* div.card.stat-card {
+    background-color: #fff
+} */
