@@ -2,6 +2,7 @@ import React, { Fragment, useContext, useRef } from "react";
 import API from "../../utils/API";
 import UserContext from "../../utils/UserContext";
 import { useHistory } from "react-router-dom";
+import "./login.css";
 
 function LoginForm(props) {
   const { email, setEmail, loggedIn, setLoggedIn } = useContext(UserContext);
@@ -51,13 +52,13 @@ function LoginForm(props) {
                 <input
                   ref={emailInput}
                   type="email"
-                  className="form-control"
+                  className="form-control" 
                   id={emailId}
                   aria-describedby={emailHelpId}
                 />
                 <small
                   id={emailHelpId}
-                  className="email-help-text form-text text-muted"
+                  className="email-help-text form-text text-muted" 
                 >
                   We'll never share your email with anyone else.
                 </small>

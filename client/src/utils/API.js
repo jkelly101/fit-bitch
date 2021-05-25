@@ -31,5 +31,11 @@ export default {
   },
   getUser: function(){
     return axios.get("/api/user/data");
+  },
+
+  getWorkoutGiphy: function() {
+    return axios.get("http://api.giphy.com/v1/gifs/search?api_key=Pl3uRuvUVj6UBRLiWpwxXeAEkXGBnzWu&q=workout&limit=5");
+
   }
+
 };
