@@ -7,20 +7,20 @@
 }
 
 button.btn.submit-btn{
-    background-color: #472BAE !important;
+    background-color: #023e8a!important;
     box-shadow:0 8px 17px 0 rgba(0, 0, 0, 0.2);
     color:#fff;
 }
 
 .container, .container-fluid {
-    background-color: #00b4d8;
+    background-color: #0077b6;
     height:100vh;
     padding-top:16px;
 }
 
 body
 {
-    background-color: #00b4d8!important;
+    background-color: #0077b6!important;
 }
 
 input
