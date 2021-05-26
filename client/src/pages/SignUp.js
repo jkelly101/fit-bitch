@@ -8,7 +8,7 @@ function SignUp(props){
     const {loggedIn} = useContext(UserContext);
     return (
         
-        <div className="container-fluid">
+        <div id="signUp-div" className="container-fluid">
             <Row>
                 <Col size="md-4"></Col>
                 <Col size="md-4">

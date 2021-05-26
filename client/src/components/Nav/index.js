@@ -35,7 +35,7 @@ function Nav() {
           );
         } else {
           if (!loginExpanded) {
-            return <button onClick={handleShow} >Login</button>;
+            return <button className="btn btn-sm btn-success" onClick={handleShow} >Login</button>;
           } else {
             return (
               <Fragment>

@@ -21,6 +21,7 @@ function Books() {
   useEffect(() => {
     loadBooks();
     getGiphy();
+
   }, [])
 
   // if(loggedIn) {
@@ -155,15 +156,12 @@ function Books() {
               </div>
             </form>
           </Col>
-          <Col size="md-6 sm-12">
-            
+          <Col size="md-6 sm-12">           
             <h1 className="mb-3 mt-3">Previous Workouts</h1>
-
             {books.length ? (
               <List>
                 {books.map(book => (
                   <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
                       <div className="d-flex w-100 justify-content-between">
                           <h5 className="mb-1"> {book.title} <span className="text-muted">{book.type}</span></h5>
                           <small>
@@ -175,7 +173,6 @@ function Books() {
                       <span className="p-2 mr-2 badge bg-light rounded-pill">Period: {book.Period}</span>
                       <span className="p-2 mr-2 badge bg-light rounded-pill">Intensity: {book.Intensity}</span>
                       <span className="p-2 mr-2 badge bg-light rounded-pill">KCalories: {book.kCal}</span>
-                    </Link>
                     <DeleteBtn onClick={() => deleteBook(book._id)} />
                   </ListItem>
                 ))}
