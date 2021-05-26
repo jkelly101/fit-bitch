@@ -18,6 +18,11 @@ button.btn.submit-btn{
     padding-top:16px;
 }
 
+#signUp-div
+{
+    background-color:#fff;
+}
+
 body
 {
     background-color: #0077b6!important;
@@ -32,4 +37,25 @@ input
 {
 
     box-shadow:0 8px 17px rgba(0, 0, 0, 0.2);
+}
+
+
+.hero-img
+{
+    background-image:url("main.PNG");
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:300px;
+    margin-bottom:20px;
+    border-radius:4px;
+}
+
+.signup-btn
+{
+    background-color:#c71fe9 !important;
+    color:#fff!important;
+    border:1px solid #9600B5!important;
+    width:100%;
+    height:50px;
 }

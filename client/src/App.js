@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Books from "./pages/Books";
 import Detail from "./pages/Detail";
@@ -9,10 +9,24 @@ import UserContext from "./utils/UserContext";
 import SignUp from "./pages/SignUp";
 import Logout from "./pages/Logout";
 import "./app.css";
+import API from "./utils/API";
 
 function App() {
   const [email, setEmail] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  
+  useEffect(() => {
+    loadUser();
+  }, [])
+
+  function loadUser() {
+    API.getUser()
+      .then(res => 
+        console.log('User Stuff Here')
+      )
+      .catch(err => console.log(err));
+};
+
   return (
     <Router>
       <UserContext.Provider value={{email, setEmail, loggedIn, setLoggedIn}}>

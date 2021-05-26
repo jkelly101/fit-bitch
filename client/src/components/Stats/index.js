@@ -1,34 +1,44 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext} from "react";
 import { Col, Row, Container } from "../../components/Grid";
+import UserContext from "../../utils/UserContext";
 import API from "../../utils/API";
 import "./styles.css";
 
 function Stats() {
 
+    useEffect(() => {
+        loadStats();
+    }, [])
+
+
     const [stats, setStats] = useState([])
+    const {loggedIn} = useContext(UserContext);
+
     let totals = [];
 
-    useEffect(() => {
-        loadStats()
-    }, [])
+    // if(loggedIn) {
+    //     reRender();
+    // }
+
+    // function reRender() {
+    //     this.forceUpdate();
+    // };
     
     function loadStats() {
         API.getUser()
           .then(res => 
-            setStats(res.data)  
+            setStats(res.data), console.log('Stats' + stats)
           )
           .catch(err => console.log(err));
     };
 
-    return (
-        
-            
+    return (     
             <Row>
                 <Col size="md-3">   
                     <div className="card display-card">           
                         <h3 className = "card-title">My Height</h3>
                         <p className="card-content mb-0">{stats.height}</p>
-                        <p>{ stats.height / 12 } Feet</p>
+                        <p id="theHeight">{ stats.height / 12 } Feet</p>
                     </div>
                 </Col>
                 <Col size="md-3">   
@@ -51,7 +61,6 @@ function Stats() {
                     </div>                  
                 </Col>
             </Row>
-    
     );
 }
 

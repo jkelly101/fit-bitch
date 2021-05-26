@@ -3,6 +3,7 @@ import React, { Fragment, useContext, useRef } from 'react';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
 import { Link, useHistory } from "react-router-dom";
+import { Col, Row, Container } from "../../components/Grid";
 
 function SignUpForm(props) {
     const { email, setEmail, loggedIn, setLoggedIn } = useContext(UserContext);
@@ -60,8 +61,10 @@ function SignUpForm(props) {
             { (() => {
                 if (!loggedIn) {
                     return (<form {...extraProps} onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            
+                        <div className="hero-img">
+
+                        </div>
+                        <div className="form-group">                       
                             <label htmlFor={emailId}>Email address</label>
                             <input ref={emailInput} type="email" className="form-control" id={emailId} aria-describedby={emailHelpId} />
                             <small id={emailHelpId} className="email-help-text form-text text-muted">We'll never share your email with anyone else.</small>
@@ -70,19 +73,27 @@ function SignUpForm(props) {
                             <label htmlFor={passwordId}>Password</label>
                             <input ref={passwordInput} type="password" className="form-control" id={passwordId} />
                         </div>
-                        <div className="form-group">
-                            <label htmlFor={weight}>Weight</label>
-                            <input ref={weightInput} type="number" className="form-control" id={weight} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor={height}>Height (Inches)</label>
-                            <input ref={heightInput} type="number" className="form-control" id={height} />
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor={bodyFat}>Body Fat (%)</label>
-                            <input ref={bodyFatInput} type="number" className="form-control" id={bodyFat} />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Sign Up</button>
+                        <Row>
+                            <Col size="md-4">   
+                                <div className="form-group">
+                                    <label htmlFor={weight}>Weight</label>
+                                    <input ref={weightInput} type="number" className="form-control" id={weight} />
+                                </div>
+                            </Col>
+                            <Col size="md-4">   
+                                <div className="form-group">
+                                    <label htmlFor={height}>Height (Inches)</label>
+                                    <input ref={heightInput} type="number" className="form-control" id={height} />
+                                </div>
+                            </Col>
+                            <Col size="md-4">   
+                                <div className="form-group">
+                                    <label htmlFor={bodyFat}>Body Fat (%)</label>
+                                    <input ref={bodyFatInput} type="number" className="form-control" id={bodyFat} />
+                                </div>
+                            </Col>
+                        </Row>
+                        <button type="submit" className="btn signup-btn">Sign Up</button>
                     </form>
                     );
                 }
