@@ -2,6 +2,10 @@
 
 Welcome to Fit-Bitch, a fitness tracking App that allows the User to track and save their workouts and body stats while enjoying hilarious workout gifs to keep their spirits up!
 
+## Get Fit
+
+Time to get Fit, Bitches: [Fit Bitch](https://peaceful-anchorage-21358.herokuapp.com/)
+
 ## Demo
 
 ![Sign Up Page](client/assets/images/sign-up.png)
