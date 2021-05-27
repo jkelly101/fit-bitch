@@ -27,18 +27,7 @@ function SignUpForm(props) {
     let bodyFat = props.className ? props.className + "-signup-bodyFat" : "signup-bodyFat";
 
     const handleSubmit = event => {
-        
-        // if the user hits enter or hits the button, this function will fire
         event.preventDefault();
-        // console.log("submit happened");
-        // console.log({ email: emailInput.current.value, password: passwordInput.current.value});
-        // API.testUserRouter()
-        // .then(data => {
-        //     console.log(data);
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // });
         API.signup({ 
             email: emailInput.current.value,
             password: passwordInput.current.value,
@@ -47,7 +36,6 @@ function SignUpForm(props) {
             bodyFat: bodyFatInput.current.value
             })
             .then(data => {
-                // console.log(data);
                 setEmail(data.data.email);
                 setLoggedIn(true);
                 history.push("/books");
